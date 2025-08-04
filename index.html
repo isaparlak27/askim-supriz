@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pofuduk Baloncuklar - Tema & Yazı</title>
+  <title>Pofuduk Baloncuklar - Fotoğraflı</title>
   <style>
     body {
       margin: 0;
@@ -69,11 +69,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
       cursor: pointer;
       user-select: none;
       transition: transform 0.2s;
       z-index: 1;
+      overflow: hidden; /* fotoğraf taşmasın */
+      background: white;
+    }
+    .bubble img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .messageBox {
       position: fixed;
@@ -119,7 +125,6 @@
       "Gülümse, dünya bizimle daha güzel 🌷",
       "Sen benim yaşama sebebimsin, bitanem 💕",
       "Her zaman yanında olacağım, kurban olduğum 💞",
-      "Seni uzaktan sarıyorum, dünya güzelim 🤗",
       "Dertlerini unut, ben buradayım senin için biricik sevgilim 🌟",
       "Güçlü ol, beraber her şey geçer 💪",
       "Hep güzel günler bizi bekliyor, hayatım 🌈",
@@ -158,6 +163,7 @@
       "Gözlerin hep gülsün, kalbim 💖",
       "Sevgiyle sarıldığın her an kıymetli 🌸",
       "Seninle hayat çok daha güzel, prensesim 🌹"
+
     ];
 
     const themes = {
@@ -190,24 +196,100 @@
       }
     };
 
+    const photos = [
+      "photo1.jpg",
+      "photo2.jpg",
+      "photo3.jpg",
+      "photo4.jpg",
+      "photo5.jpg",
+      "photo6.jpg",
+      "photo7.jpg",
+      "photo8.jpg",
+      "photo9.jpg",
+      "photo10.jpg",
+      "photo11.jpg",
+      "photo12.jpg",
+      "photo13.jpg",
+      "photo14.jpg",
+      "photo15.jpg",
+      "photo16.jpg",
+      "photo17.jpg",
+      "photo18.jpg",
+      "photo19.jpg",
+      "photo20.jpg",
+      "photo21.jpg",
+      "photo22.jpg",
+      "photo23.jpg",
+      "photo24.jpg",
+      "photo25.jpg",
+      "photo26.jpg",
+      "photo27.jpg",
+      "photo28.jpg",
+      "photo29.jpg",
+      "photo30.jpg",
+      "photo31.jpg",
+      "photo32.jpg",
+      "photo33.jpg",
+      "photo34.jpg",
+      "photo35.jpg",
+      "photo36.jpg",
+      "photo37.jpg",
+      "photo38.jpg",
+      "photo39.jpg",
+      "photo40.jpg",
+      "photo41.jpg",
+      "photo42.jpg",
+      "photo43.jpg",
+      "photo44.jpg",
+      "photo45.jpg",
+      "photo46.jpg",
+      "photo47.jpg",
+      "photo48.jpg",
+      "photo49.jpg",
+      "photo50.jpg",
+      "photo51.jpg",
+      "photo52.jpg",
+      "photo53.jpg",
+      "photo54.jpg",
+      "photo55.jpg",
+      "photo56.jpg",
+      "photo57.jpg",
+      "photo58.jpg",
+      "photo59.jpg",
+      "photo60.jpg",
+      "photo61.jpg",
+      "photo62.jpg",
+      "photo63.jpg",
+      "photo64.jpg",
+      "photo65.jpg",
+      "photo66.jpg",
+      "photo67.jpg",
+      "photo68.jpg",
+      "photo69.jpg",
+      "photo70.jpg",
+      "photo71.jpg",
+      
+    ];
+
     let currentTheme = 'romantic';
+    let messageTimeout = null;
 
     function getRandomBubbleColor() {
       const colors = themes[currentTheme].bubbleColors;
       return colors[Math.floor(Math.random() * colors.length)];
     }
 
-    let messageTimeout = null;
-
     function createBubble() {
       const bubble = document.createElement('div');
       bubble.classList.add('bubble');
       bubble.style.left = Math.random() * (window.innerWidth - 120) + 'px';
       bubble.style.bottom = '-150px';
-      bubble.innerHTML = '🎈';
+
+      const img = document.createElement('img');
+      img.src = photos[Math.floor(Math.random() * photos.length)];
+      bubble.appendChild(img);
 
       const bgColor = getRandomBubbleColor();
-      bubble.style.background = bgColor;
       bubble.style.borderColor = bgColor;
       bubble.style.boxShadow = `0 0 20px ${bgColor}`;
 
@@ -253,7 +335,6 @@
 
     setInterval(createBubble, 1000);
 
-    // Tema seçimi
     const buttons = document.querySelectorAll('#themeSelector button');
     buttons.forEach(button => {
       button.addEventListener('click', () => {
@@ -266,8 +347,6 @@
     });
 
     document.body.style.background = themes[currentTheme].background;
-
   </script>
-
 </body>
 </html>
