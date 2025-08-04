@@ -98,9 +98,30 @@
       text-align: center;
       z-index: 5;
     }
+
+    #counter {
+  position: fixed;
+  top: 10px;      /* Üstten biraz boşluk */
+  left: 10px;     /* Soldan biraz boşluk */
+  transform: none; /* Ortalamayı kaldır */
+  background: #fff0f5dd;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #8b3a3a;
+  z-index: 6;
+  box-shadow: 0 0 15px rgba(219, 112, 147, 0.6);
+  user-select: none;
+}
+
+
   </style>
 </head>
 <body>
+
+<div id="counter"></div>
+
 
   <div id="themeSelector">
     <button data-theme="romantic" class="active">Romantik Pembe</button>
@@ -343,10 +364,31 @@
 
         currentTheme = button.getAttribute('data-theme');
         document.body.style.background = themes[currentTheme].background;
+
       });
     });
 
     document.body.style.background = themes[currentTheme].background;
+
+
+// Sayaç fonksiyonu
+    function updateCounter() {
+      const start = new Date('2024-08-24T00:00:00');
+      const now = new Date();
+      const diff = now - start;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('counter').textContent =
+        `Mutluluğumuz başladığından beri: ${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye`;
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
   </script>
 </body>
 </html>
